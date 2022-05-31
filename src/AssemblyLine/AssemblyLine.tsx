@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NewTask from "../NewTask/NewTask";
 import Stage from "../Stage/Stage";
 import short from "short-uuid";
+import './AssemblyLine.css';
 
 interface IProps {
   stages: string[];
@@ -86,6 +87,7 @@ const AssemblyLine: React.FC<IProps> = ({ stages }) => {
         style={{
           display: "flex",
           justifyContent: "space-around",
+          flexWrap: "wrap",
         }}
       >
         {assembly.map(({ title, tasks }) => {

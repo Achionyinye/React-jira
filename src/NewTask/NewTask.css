@@ -19,13 +19,24 @@ h1{
 
 }
 @media screen and (max-width: 992px) {
+    h1{
+        font-display: block;
+        font-size: 2.0rem;
+        font-weight: bold;
+        text-align: center;
+        color: orangered;
+        margin-top: 1rem;
+        font-family: 'Roboto', sans-serif;
+        
+    }
     .item{
-        width: 100%;
-        margin-left: 0;
+        width: 90%;
+        margin-left: 5%;
         margin-top: 2%;
         margin-bottom: 2%;
         border: 1px solid #e14242;
         border-radius: 5px;
         padding: 10px;
+       
     }
 }
