@@ -4,12 +4,14 @@ import Task from "../Task/Task";
 
 export interface INextStage {
   handleNextStage: (stage: string, id: string, title: string) => void;
+  handlePrevStage: (stage: string, id: string, title: string) => void;
 }
 
 const Stage: React.FC<IStage & INextStage> = ({
   title,
   tasks,
   handleNextStage,
+  handlePrevStage,
 }) => {
   return (
     <div>
@@ -22,6 +24,7 @@ const Stage: React.FC<IStage & INextStage> = ({
             id={task.id}
             stageTitle={title}
             handleNextStage={handleNextStage}
+            handlePrevStage={handlePrevStage}
           />
         ))}
       </div>

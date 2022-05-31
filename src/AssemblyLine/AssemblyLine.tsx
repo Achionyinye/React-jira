@@ -46,7 +46,7 @@ const AssemblyLine: React.FC<IProps> = ({ stages }) => {
       const newTasks = taskStage.tasks.filter((task) => task.id !== id);
       assemblyCpy[stageIndex].tasks = newTasks;
     }
-
+    console.log(assemblyCpy);
     if (assemblyCpy[assemblyCpy.length - 1].title === stage) {
       setAssembly(assemblyCpy);
       return;
@@ -59,13 +59,33 @@ const AssemblyLine: React.FC<IProps> = ({ stages }) => {
     setAssembly(assemblyCpy);
   };
 
+
+  const handlePrevStage = (stage: string, id: string, title: string) => {
+    const assemblyCpy = [...assembly];
+    const taskStage = assemblyCpy.find((s) => s.title === stage);
+    const stageIndex = assemblyCpy.findIndex((s) => s.title === stage);
+   
+    if(stageIndex === 0){
+      window.alert('You are at the first stage');
+      return;
+    }
+    if (taskStage) {
+      const newTasks = taskStage.tasks.filter((task) => task.id !== id);
+      assemblyCpy[stageIndex].tasks = newTasks;
+    }
+    assemblyCpy[stageIndex - 1].tasks.push({id, taskTitle: title});
+
+    setAssembly(assemblyCpy);
+  };
+
   return (
-    <div style={{ padding: "40px" }}>
+    <div style={{ padding: "40px" , color:"whitesmoke", fontSize:"1.3rem"}}>
       <NewTask handleNewTask={handleNewTask} />
       <div
+      className="container"
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
         }}
       >
         {assembly.map(({ title, tasks }) => {
@@ -75,6 +95,7 @@ const AssemblyLine: React.FC<IProps> = ({ stages }) => {
               title={title}
               tasks={tasks}
               handleNextStage={handleNextStage}
+              handlePrevStage={handlePrevStage}
             />
           );
         })}

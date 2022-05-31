@@ -6,6 +6,7 @@ interface IProp {
   taskTitle: string;
   id: string;
   handleNextStage: INextStage["handleNextStage"];
+  handlePrevStage: INextStage["handlePrevStage"];
 }
 
 const Task: React.FC<IProp> = ({
@@ -13,17 +14,25 @@ const Task: React.FC<IProp> = ({
   taskTitle,
   id,
   handleNextStage,
+  handlePrevStage,
 }) => {
   const handleClick = (event: React.MouseEvent<HTMLHeadingElement>) => {
+    console.log()
     if (event.type === "click") {
+      console.log("Left click")
       handleNextStage(stageTitle, id, taskTitle);
+    }else if (event.type === "contextmenu") {
+      event.preventDefault();
+      handlePrevStage(stageTitle, id, taskTitle);
+       console.log("Right click");
     }
   };
 
   return (
     <h4
       onClick={handleClick}
-      style={{ border: "1px solid red", padding: "5px" }}
+      onContextMenu={handleClick}
+      style={{ border: "1px solid red", padding: "10px" }}
     >
       {taskTitle}
     </h4>

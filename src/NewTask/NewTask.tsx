@@ -1,4 +1,5 @@
 import React, { FormEvent } from "react";
+import './NewTask.css';
 
 interface IProp {
   handleNewTask: (newTask: string) => void;
@@ -19,10 +20,11 @@ const NewTask: React.FC<IProp> = ({ handleNewTask }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Add An Item</h1>
+        <h1>Add New Item</h1>
         <input
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
+          className= "item"
           type="text"
           name="item"
           id="item"

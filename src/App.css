@@ -1,5 +1,7 @@
 .App {
+  /* background: url("./Images/istockphoto-1396191338-612x612.jpg") no-repeat center center fixed; */
   text-align: center;
+  background-color: #fafafa;
 }
 
 .App-logo {
@@ -16,7 +18,7 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
+  display: grid;
   flex-direction: column;
   align-items: center;
   justify-content: center;
